@@ -8,7 +8,7 @@ import Credits from './Credits';
 const style = {
   'fontFamily': 'Roboto, sans-serif',
   'textAlign': 'center',
-}
+  }
 
 const App = () => (
   <div style={style}>

@@ -4,10 +4,14 @@ import PlayButton from './PlayButton';
 import SecondaryButtons from './SecondaryButtons';
 import Settings from './Settings';
 
+const secondaryButtonsStyle = {
+  'marginBottom': 64,
+}
+
 const Console = () => (
   <div>
     <PlayButton />
-    <SecondaryButtons />
+    <SecondaryButtons style={secondaryButtonsStyle}/>
     <Settings />
   </div>
 )

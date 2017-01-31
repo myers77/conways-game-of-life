@@ -11,11 +11,14 @@ import * as Actions from '../actions';
 
 const style = {
   'width': '30%',
+  'paddingTop': 36,
+  'margin': 'auto',
 }
 
 const sliderRow = {
-    'display': 'flex',
+  'display': 'flex',
   'flexDirection': 'row',
+  'marginTop': 36,
 }
 
 const speedSliderStyle = {
@@ -23,7 +26,6 @@ const speedSliderStyle = {
 }
 
 const Settings = ({ actions, }) => {
-
   const handleShowTrailsChecked = () => {
     actions.toggleShowTrails();
   }
@@ -33,31 +35,24 @@ const Settings = ({ actions, }) => {
   }
 
   return (
-    <div
-      style={style}
-    >
-      <Checkbox
-        label="Show trails"
-        onCheck={handleShowTrailsChecked}
-      />
-      <div
-        style={sliderRow}
-      >
-      <FontIcon
-            className="material-icons"
-          >directions_walk</FontIcon>
-      <Slider
-        min={0}
-        max={500}
-        step={1}
-        defaultValue={200}
-        style={speedSliderStyle}
-        onChange={handleSpeedSlider}
-      />
-      <FontIcon
-            className="material-icons"
-          >motorcycle</FontIcon>
-          </div>
+    <div style={style}>
+      <Checkbox label="Show trails" onCheck={handleShowTrailsChecked} />
+      <div style={sliderRow}>
+        <FontIcon className="material-icons" >
+          directions_walk
+        </FontIcon>
+        <Slider
+          min={0}
+          max={500}
+          step={1}
+          defaultValue={500}
+          style={speedSliderStyle}
+          onChange={handleSpeedSlider}
+        />
+        <FontIcon className="material-icons">
+          motorcycle
+        </FontIcon>
+      </div>
     </div>
   )
 }

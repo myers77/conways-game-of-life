@@ -12,9 +12,9 @@ const iconStyle = {
 }
 
 const buttonStyle = {
-  'height': '56px',
-  'width': '56px',
-  'margin': '12px 24px'
+  'height': 56,
+  'width': 56,
+  'margin': '12 24',
 }
 
 const SecondaryButtons = ({ width, height, grid, isRunning, intervalId, actions }) => {
@@ -40,25 +40,17 @@ const SecondaryButtons = ({ width, height, grid, isRunning, intervalId, actions 
 
   return (
     <div>
-      <IconButton
-        iconStyle={iconStyle}
-        style={buttonStyle}
-      >
-        <FontIcon
-          className="material-icons"
-          onClick={() => {
-            handleRandomizeGrid(height, width)
-          }}
-        >cached</FontIcon>
+      <IconButton iconStyle={iconStyle} style={buttonStyle}>
+        <FontIcon className="material-icons" 
+          onClick={() => handleRandomizeGrid(height, width) }
+        >
+          cached
+        </FontIcon>
       </IconButton>
-      <IconButton
-        iconStyle={iconStyle}
-        style={buttonStyle}
-      >
-        <FontIcon
-          className="material-icons"
-          onClick={handleGameStateChange}
-        >skip_next</FontIcon>
+      <IconButton iconStyle={iconStyle} style={buttonStyle}>
+        <FontIcon className="material-icons" onClick={handleGameStateChange}>
+          skip_next
+        </FontIcon>
       </IconButton>
     </div>
   )

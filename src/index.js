@@ -32,7 +32,7 @@ const initialState = {
   showTrails: false,
   isRunning: false,
   intervalId: undefined,
-  animationSpeed: 200,
+  animationSpeed: 500,
 };
 
 const enhancer = compose(applyMiddleware(createLogger()));

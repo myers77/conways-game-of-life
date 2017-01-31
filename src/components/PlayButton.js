@@ -8,12 +8,12 @@ import * as Actions from '../actions';
 
 
 const playIconStyle = {
-  'fontSize': '72px',
+  'fontSize': 72,
 }
 
 const playButtonStyle = {
-  'height': '94px',
-  'width': '94px',
+  'height': 94,
+  'width': 94,
 }
 
 const PlayButton = ({ isRunning, intervalId, animationSpeed, actions }) => {
@@ -23,45 +23,22 @@ const PlayButton = ({ isRunning, intervalId, animationSpeed, actions }) => {
       clearInterval(intervalId);
       actions.setIntervalId(undefined);
     } else {
-        const interval = setInterval(() => {
-          actions.runGameStep();
-        }, 500 - animationSpeed);
-        actions.setIntervalId(interval)
-      }
-    // requestAnimationFrame(handleToggleRun);
+      const interval = setInterval(() => {
+        actions.runGameStep();
+      }, 500 - animationSpeed);
+      actions.setIntervalId(interval)
+    }
   }
 
-  if (isRunning) {
-      return (
+  return (
     <div>
-      <IconButton
-          iconStyle={playIconStyle}
-          style={playButtonStyle}
-        >
-          <FontIcon
-            className="material-icons"
-            onClick={handleToggleRun}
-          >
-            pause</FontIcon>
-        </IconButton>
-  </div>)
-    } else {
-            return (
-    <div>
-      <IconButton
-          iconStyle={playIconStyle}
-          style={playButtonStyle}
-        >
-          <FontIcon
-            className="material-icons"
-            onClick={handleToggleRun}
-          >
-            play_arrow</FontIcon>
-        </IconButton>
-  </div>)
-    }
-
-        
+      <IconButton iconStyle={playIconStyle} style={playButtonStyle}>
+        <FontIcon className="material-icons" onClick={handleToggleRun}>
+          { isRunning ? 'pause' : 'play_arrow' }
+        </FontIcon>
+      </IconButton>
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({
