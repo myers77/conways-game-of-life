@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import Paper from 'material-ui/Paper';
 
 import * as Actions from '../actions';

@@ -19,7 +19,7 @@ const mediumFontWeight = {
 
 const Header = () => (
   <div style={headerStyle}>
-    <div style={cursive}>Conway's</div>
+    <div style={cursive}>Conway&rsquo;s</div>
     <div style={mediumFontWeight}>Game of Life</div>
   </div>
 )

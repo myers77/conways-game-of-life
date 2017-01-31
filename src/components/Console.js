@@ -54,6 +54,7 @@ const speedSliderStyle = {
 
 const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, actions }) => {
   const handleToggleRun = () => {
+    console.log('toggling run');
     actions.toggleRun();
     if (isRunning) {
       clearInterval(intervalId);
