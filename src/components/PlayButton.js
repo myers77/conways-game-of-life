@@ -16,7 +16,7 @@ const playButtonStyle = {
   'width': '85px',
 }
 
-const PlayButton = ({ width, height, grid, isRunning, intervalId, actions }) => {
+const PlayButton = ({ isRunning, intervalId, actions }) => {
   const handleToggleRun = () => {
     actions.toggleRun();
     if (intervalId) {

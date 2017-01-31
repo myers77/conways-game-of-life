@@ -36,15 +36,7 @@ const SecondaryButtons = ({ width, height, grid, isRunning, intervalId, actions 
               onClick={() => {
                 handleRandomizeGrid(height, width)
               }}
-            >shuffle</FontIcon>
-          </IconButton>
-          <IconButton>
-            <FontIcon
-              className="material-icons"
-              onClick={() => {
-                handleClearGrid(height, width)
-              }}
-            >clear</FontIcon>
+            >cached</FontIcon>
           </IconButton>
           <IconButton>
             <FontIcon

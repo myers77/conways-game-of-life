@@ -10,10 +10,8 @@ import { map } from 'ramda';
 import grid from './reducers/grid';
 import App from './components/App';
 
-const logger = createLogger();
 
 // Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
 let cells = new Array(100).fill(0);
@@ -29,7 +27,6 @@ history = map(() => {
 const initialState = {
   height: 100,
   width: 100,
-  animationTrails: true,
   grid: cells,
   historyGrid: history,
   showTrails: false,
@@ -37,13 +34,8 @@ const initialState = {
   intervalId: undefined,
 };
 
-const enhancer = compose(
-  applyMiddleware(logger),
-);
-
-// const store = createStore(grid, initialState, enhancer);
-const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
+const enhancer = compose(applyMiddleware(createLogger()));
+const store = createStore(grid, initialState, enhancer);
 const rootElement = document.getElementById('root');
 
 render(
