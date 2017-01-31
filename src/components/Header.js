@@ -1,20 +1,20 @@
 import React from 'react';
 
 const headerStyle = {
-  'marginTop': 32,
-  'fontSize': 48,
-  'textAlign': 'center',
-  'color': 'rgba(0,0,0,0.87)',
+  marginTop: 32,
+  fontSize: 48,
+  textAlign: 'center',
+  color: 'rgba(0,0,0,0.87)',
 }
 
 const cursive = {
-  'fontSize': 42,
-  'fontFamily': 'Yellowtail, cursive',
+  fontSize: 42,
+  fontFamily: 'Yellowtail, cursive',
 }
 
 const mediumFontWeight = {
-  'letterSpacing': 1,
-  'fontWeight': 500,
+  letterSpacing: 1,
+  fontWeight: 500,
 }
 
 const Header = () => (

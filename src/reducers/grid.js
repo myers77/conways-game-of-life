@@ -18,7 +18,6 @@ const grid = (state, action) => {
       let newCells = state.grid.map((arr) => {
         return arr.slice();
       })
-
       let newHistoryGrid = state.historyGrid.map((arr) => {
         return arr.slice();
       })
@@ -44,7 +43,7 @@ const grid = (state, action) => {
               newCells[row][col] = 1;
               break;
             default:
-              newCells[row][col] = 0; //
+              newCells[row][col] = 0;
           }
 
           if (newCells[row][col]) {
@@ -55,7 +54,7 @@ const grid = (state, action) => {
         }
       }
 
-      // Stitch edges
+      // Stitch edges together
       for (let l = 1; l < state.height - 1; l++) {
         newCells[l][0] = newCells[l][state.width - 3];
         newCells[l][state.width - 2] = newCells[l][1];

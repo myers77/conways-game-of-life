@@ -10,7 +10,6 @@ import { map } from 'ramda';
 import grid from './reducers/grid';
 import App from './components/App';
 
-
 // Needed for onTouchTap
 injectTapEventPlugin();
 

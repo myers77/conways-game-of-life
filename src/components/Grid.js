@@ -60,24 +60,15 @@ class Grid extends Component {
 
   drawHistory(ctx, grid, maxAge) {
     const scale = 5;
-    // ctx.clearRect(0, 0, this.props.height * scale, this.props.width * scale);
     ctx.fillStyle='#1A237E'
     ctx.fillRect(0, 0, this.props.height * scale, this.props.width * scale)
     grid.map((row, rowIndex) => {
       row.map((cell, cellIndex) => {
-        // if (cell < maxAge) {
-          // ctx.fillStyle=`rgba(255,255,255,${1/cell})`
-          // ctx.fillStyle=`rgba(${Math.round(245 + 10 * (1 - cell/maxAge))},
-          //                     ${Math.round(255 * (1 - cell/maxAge))},
-          //                     ${Math.round(87 + 168 * (1 - cell/maxAge))},
-          //                     1)`;
-          // ctx.fillStyle=`rgba(255,0,0,${1/cell})`
-          ctx.fillStyle=`rgba(${Math.round(245+ 10 * (1 - cell/maxAge))},
-                              ${Math.round(0 + 255 * (1 - cell/maxAge))},
-                              ${Math.round(0 + 255 * (1 - cell/maxAge))},
-                              1)`;
-          ctx.fillRect(rowIndex * scale, cellIndex * scale, scale, scale);
-        // }
+        ctx.fillStyle=`rgba(${Math.round(245+ 10 * (1 - cell/maxAge))},
+                            ${Math.round(0 + 255 * (1 - cell/maxAge))},
+                            ${Math.round(0 + 255 * (1 - cell/maxAge))},
+                            1)`;
+        ctx.fillRect(rowIndex * scale, cellIndex * scale, scale, scale);
       });
     });
   }

@@ -4,59 +4,37 @@ import { bindActionCreators } from 'redux';
 
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton'
-import Checkbox from 'material-ui/Checkbox';
-import Slider from 'material-ui/Slider';
+import Toggle from 'material-ui/Toggle';
 
 import * as Actions from '../actions';
 
 const style = {
-  'width': '30%',
-  'paddingTop': 36,
-  'margin': 'auto',
+  width: '30%',
+  margin: 'auto',
 }
 
-const sliderRow = {
-  'display': 'flex',
-  'flexDirection': 'row',
-  'marginTop': 36,
-}
-
-const speedSliderStyle = {
-  'width': '80%',
+const linkStyle = {
+  marginTop: 96,
 }
 
 const Settings = ({ actions, }) => {
-  const handleShowTrailsChecked = () => {
+  const handleShowTrailsToggled = () => {
     actions.toggleShowTrails();
   }
 
-  const handleSpeedSlider = (event, value) => {
-    actions.setAnimationSpeed(value);
-  }
-
   return (
+  <div>
     <div style={style}>
-      <Checkbox label="Show trails" onCheck={handleShowTrailsChecked} />
-      <div style={sliderRow}>
-        <FontIcon className="material-icons" >
-          directions_walk
-        </FontIcon>
-        <Slider
-          min={0}
-          max={500}
-          step={1}
-          defaultValue={500}
-          style={speedSliderStyle}
-          onChange={handleSpeedSlider}
-        />
-        <FontIcon className="material-icons">
-          motorcycle
-        </FontIcon>
-      </div>
+      <Toggle label="Show trails" onToggle={handleShowTrailsToggled} />
     </div>
+    <div style={linkStyle}>
+      <a href='https://github.com/myers77/conways-game-of-life'>
+        Source code
+      </a>
+    </div>
+  </div>
   )
 }
-
 
 const mapStateToProps = state => ({
   ...state
