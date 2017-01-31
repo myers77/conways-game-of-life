@@ -13,9 +13,13 @@ const style = {
   'width': '30%',
 }
 
+const sliderRow = {
+    'display': 'flex',
+  'flexDirection': 'row',
+}
+
 const speedSliderStyle = {
-  'display': 'flex',
-  // 'flexDirection': 'row',
+  'width': '80%',
 }
 
 const Settings = ({ actions, }) => {
@@ -25,7 +29,7 @@ const Settings = ({ actions, }) => {
   }
 
   const handleSpeedSlider = (event, value) => {
-    console.log(value);
+    actions.setAnimationSpeed(value);
   }
 
   return (
@@ -37,7 +41,7 @@ const Settings = ({ actions, }) => {
         onCheck={handleShowTrailsChecked}
       />
       <div
-        style={speedSliderStyle}
+        style={sliderRow}
       >
       <FontIcon
             className="material-icons"
@@ -46,12 +50,13 @@ const Settings = ({ actions, }) => {
         min={0}
         max={500}
         step={1}
-        defaultValue={100}
+        defaultValue={200}
+        style={speedSliderStyle}
         onChange={handleSpeedSlider}
       />
       <FontIcon
             className="material-icons"
-          >directions_run</FontIcon>
+          >motorcycle</FontIcon>
           </div>
     </div>
   )

@@ -7,6 +7,16 @@ import { map } from 'ramda';
 
 import * as Actions from '../actions';
 
+const iconStyle = {
+  'fontSize': '32px',
+}
+
+const buttonStyle = {
+  'height': '56px',
+  'width': '56px',
+  'margin': '12px 24px'
+}
+
 const SecondaryButtons = ({ width, height, grid, isRunning, intervalId, actions }) => {
   const handleGameStateChange = () => {
     actions.runGameStep();
@@ -30,19 +40,25 @@ const SecondaryButtons = ({ width, height, grid, isRunning, intervalId, actions 
 
   return (
     <div>
-      <IconButton>
-            <FontIcon
-              className="material-icons"
-              onClick={() => {
-                handleRandomizeGrid(height, width)
-              }}
-            >cached</FontIcon>
-          </IconButton>
-          <IconButton>
-            <FontIcon
-              className="material-icons"
-              onClick={handleGameStateChange}
-            >skip_next</FontIcon>
+      <IconButton
+        iconStyle={iconStyle}
+        style={buttonStyle}
+      >
+        <FontIcon
+          className="material-icons"
+          onClick={() => {
+            handleRandomizeGrid(height, width)
+          }}
+        >cached</FontIcon>
+      </IconButton>
+      <IconButton
+        iconStyle={iconStyle}
+        style={buttonStyle}
+      >
+        <FontIcon
+          className="material-icons"
+          onClick={handleGameStateChange}
+        >skip_next</FontIcon>
       </IconButton>
     </div>
   )

@@ -4,6 +4,7 @@ import {
   TOGGLE_SHOW_TRAILS,
   TOGGLE_RUN,
   SET_INTERVAL_ID,
+  SET_ANIMATION_SPEED,
 } from '../actions';
 
 const grid = (state, action) => {
@@ -25,14 +26,12 @@ const grid = (state, action) => {
       for (let row = 1; row < state.height - 1; row++) {
         for (let col = 1; col < state.width - 1; col++) {
           let total = 0;
-         
+
           total += state.grid[row - 1][col - 1];
           total += state.grid[row - 1][col];
           total += state.grid[row - 1][col + 1];
-
           total += state.grid[row][col - 1];
           total += state.grid[row][col + 1];
-
           total += state.grid[row + 1][col - 1];
           total += state.grid[row + 1][col];
           total += state.grid[row + 1][col + 1];
@@ -58,10 +57,10 @@ const grid = (state, action) => {
 
       // Stitch edges
       for (let l = 1; l < state.height - 1; l++) {
-        newCells[l][0] = newCells[l][state.height - 3];
-        newCells[l][state.height - 2] = newCells[l][1];
-        newCells[0][l] = newCells[state.height - 3][l];
-        newCells[state.height - 2][l] = newCells[1][l];
+        newCells[l][0] = newCells[l][state.width - 3];
+        newCells[l][state.width - 2] = newCells[l][1];
+        newCells[0][l] = newCells[state.width - 3][l];
+        newCells[state.width - 2][l] = newCells[1][l];
       }
 
       return {
@@ -83,6 +82,11 @@ const grid = (state, action) => {
       return {
         ...state,
         intervalId: action.interval,
+      }
+    case SET_ANIMATION_SPEED:
+      return {
+        ...state,
+        animationSpeed: action.value,
       }
     default:
       return state;

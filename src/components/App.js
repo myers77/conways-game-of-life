@@ -2,7 +2,8 @@ import React from 'react';
 
 import Header from './Header';
 import Grid from './Grid';
-import Console from './Console'
+import Console from './Console';
+import Credits from './Credits';
 
 const style = {
   'fontFamily': 'Roboto, sans-serif',
@@ -14,6 +15,7 @@ const App = () => (
     <Header />
     <Grid />
     <Console />
+    <Credits />
   </div>
 );
 

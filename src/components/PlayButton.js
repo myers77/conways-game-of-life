@@ -8,15 +8,15 @@ import * as Actions from '../actions';
 
 
 const playIconStyle = {
-  'fontSize': '60px',
+  'fontSize': '72px',
 }
 
 const playButtonStyle = {
-  'height': '85px',
-  'width': '85px',
+  'height': '94px',
+  'width': '94px',
 }
 
-const PlayButton = ({ isRunning, intervalId, actions }) => {
+const PlayButton = ({ isRunning, intervalId, animationSpeed, actions }) => {
   const handleToggleRun = () => {
     actions.toggleRun();
     if (intervalId) {
@@ -25,7 +25,7 @@ const PlayButton = ({ isRunning, intervalId, actions }) => {
     } else {
         const interval = setInterval(() => {
           actions.runGameStep();
-        }, 50);
+        }, 500 - animationSpeed);
         actions.setIntervalId(interval)
       }
     // requestAnimationFrame(handleToggleRun);
