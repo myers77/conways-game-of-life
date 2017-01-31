@@ -1,6 +1,7 @@
 import {
   UPDATE_GRID,
   RUN_GAME_STEP,
+  TOGGLE_SHOW_TRAILS,
 } from '../actions';
 
 const grid = (state, action) => {
@@ -12,6 +13,10 @@ const grid = (state, action) => {
       }
     case RUN_GAME_STEP:
       let newCells = state.grid.map((arr) => {
+        return arr.slice();
+      })
+
+      let newHistoryGrid = state.historyGrid.map((arr) => {
         return arr.slice();
       })
 
@@ -40,6 +45,12 @@ const grid = (state, action) => {
             default:
               newCells[row][col] = 0; //
           }
+
+          if (newCells[row][col]) {
+            newHistoryGrid[row][col] = 1;
+          } else {
+            newHistoryGrid[row][col] += 1;
+          }
         }
       }
 
@@ -53,10 +64,14 @@ const grid = (state, action) => {
 
       return {
         ...state,
-        oldOldGrid: state.oldGrid,
-        oldGrid: state.grid,
+        historyGrid: newHistoryGrid,
         grid: newCells,
       };
+    case TOGGLE_SHOW_TRAILS:
+      return {
+        ...state,
+        showTrails: !state.showTrails,
+      }
     default:
       return state;
   }

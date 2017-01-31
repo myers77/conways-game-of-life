@@ -1,29 +1,23 @@
 import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton'
+import Checkbox from 'material-ui/Checkbox';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { map } from 'ramda';
 
 import * as Actions from '../actions';
 
+const playIconStyle = {
+  'font-size': '60px',
+}
+
+const playButtonStyle = {
+  'height': '85px',
+  'width': '85px',
+}
+
 const Console = ({ width, height, grid, actions }) => {
-  // let input
-
-  // const handleWidthChange = (e) => {
-  //   actions.setGridSize({
-  //     width: parseInt(e.target.value),
-  //     height
-  //   });
-  // };
-
-  // const handleHeightChange = (e) => {
-  //   actions.setGridSize({
-  //     width,
-  //     height: parseInt(e.target.value)
-  //   });
-  // };
-
   const handleGameStateChange = () => {
     actions.runGameStep();
   }
@@ -51,9 +45,27 @@ const Console = ({ width, height, grid, actions }) => {
     actions.updateGrid(newGrid);
   }
 
+  const handleShowTrailsChecked = () => {
+    actions.toggleShowTrails();
+  }
+
   return (
+
     <div>
-      <IconButton tooltip='randomize'>
+      <div>
+        <IconButton
+          iconStyle={playIconStyle}
+          style={playButtonStyle}
+        >
+          <FontIcon
+            className="material-icons"
+            onClick={handleToggleRun}
+          >
+            play_arrow</FontIcon>
+        </IconButton>
+      </div>
+      <div>
+      <IconButton>
         <FontIcon
           className="material-icons"
           onClick={() => {
@@ -61,7 +73,7 @@ const Console = ({ width, height, grid, actions }) => {
           }}
         >shuffle</FontIcon>
       </IconButton>
-      <IconButton tooltip='clear'>
+      <IconButton>
         <FontIcon
           className="material-icons"
           onClick={() => {
@@ -69,18 +81,17 @@ const Console = ({ width, height, grid, actions }) => {
           }}
         >clear</FontIcon>
       </IconButton>
-      <IconButton tooltip='run'>
-        <FontIcon
-          className="material-icons"
-          onClick={handleToggleRun}>
-          play_arrow</FontIcon>
-      </IconButton>
-      <IconButton tooltip='step'>
+      <IconButton>
         <FontIcon
           className="material-icons"
           onClick={handleGameStateChange}
         >skip_next</FontIcon>
       </IconButton>
+      <Checkbox
+        label="Show trails"
+        onCheck={handleShowTrailsChecked}
+       />
+       </div>
     </div>
   )
 }

@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { map, addIndex } from 'ramda';
+import Paper from 'material-ui/Paper';
 
 import * as Actions from '../actions';
-import Cell from './Cell';
 
-const rowStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'nowrap',
-};
+  const style = {
+    height: 500,
+    width: 500,
+    margin: 20,
+    textAlign: 'center',
+    display: 'inline-block',
+  };
 
 class Grid extends Component {
   tick() {
@@ -21,7 +22,6 @@ class Grid extends Component {
 
   draw(ctx) {
     const scale = 5;
-    var mapIndexed = addIndex(map);
     ctx.clearRect(0, 0, this.props.height * scale, this.props.width * scale);
     this.props.grid.map((row, rowIndex) => {
       row.map((cell, cellIndex) => {
@@ -35,7 +35,6 @@ class Grid extends Component {
 
   drawTransition(ctx, percentCompletion) {
     const scale = 5;
-    var mapIndexed = addIndex(map);
     ctx.clearRect(0, 0, this.props.height * scale, this.props.width * scale);
     this.props.grid.map((row, rowIndex) => {
       row.map((cell, cellIndex) => {
@@ -90,15 +89,29 @@ class Grid extends Component {
     }
   }
 
-  drawTrails(ctx, grid, opacity) {
+  drawHistory(ctx, grid, maxAge) {
     const scale = 5;
-    var mapIndexed = addIndex(map);
+    // ctx.clearRect(0, 0, this.props.height * scale, this.props.width * scale);
+    ctx.fillStyle='#1A237E'
+    ctx.fillRect(0, 0, this.props.height * scale, this.props.width * scale)
     grid.map((row, rowIndex) => {
       row.map((cell, cellIndex) => {
-        if (cell) {
-          ctx.fillStyle=`rgba(0,0,0,${opacity})`;
+        // console.log(`rgba(${255 * (cell - cell/maxAge)},${106 + 149 * (cell - cell/maxAge)},${213 + 42 * (cell - cell/maxAge)},${1/cell})`);
+        // if (cell < maxAge) {
+          // ctx.fillStyle=`rgba(255,255,255,${1/cell})`
+          // ctx.fillStyle=`rgba(${Math.round(245 + 10 * (1 - cell/maxAge))},
+          //                     ${Math.round(255 * (1 - cell/maxAge))},
+          //                     ${Math.round(87 + 168 * (1 - cell/maxAge))},
+          //                     1)`;
+          // console.log(`rgba(${Math.round(255 * (cell - cell/maxAge))},${Math.round(106 + 149 * (cell - cell/maxAge))},${Math.round(213 + 42 * (cell - cell/maxAge))},${1/cell})`);
+          // ctx.fillStyle=`rgba(255,0,0,${1/cell})`
+          ctx.fillStyle=`rgba(${Math.round(245+ 10 * (1 - cell/maxAge))},
+                              ${Math.round(0 + 255 * (1 - cell/maxAge))},
+                              ${Math.round(0 + 255 * (1 - cell/maxAge))},
+                              1)`;
+                              // console.log((1 - cell/maxAge));
           ctx.fillRect(rowIndex * scale, cellIndex * scale, scale, scale);
-        }
+        // }
       });
     });
   }
@@ -106,35 +119,28 @@ class Grid extends Component {
   componentDidUpdate() {
     var ctx = document.getElementById("canvas").getContext("2d");
     // this.animateTransition(this.props.animationFrames, 0, this.props.animationDelay);
-    this.draw(ctx);
-    this.drawTrails(ctx, this.props.oldOldGrid, 0.1);
-    this.drawTrails(ctx, this.props.oldGrid, 0.3);
-    this.drawTrails(ctx, this.props.grid, 1);
+    if (this.props.showTrails) {
+      this.drawHistory(ctx, this.props.historyGrid, 5);
+    } else {
+      this.draw(ctx);
+    }
+    // console.log(this.props.showTrails);
     // for (const i = 0; i < this.props.animationFrames; i++) {
     //   this.drawTransition(ctx);
     // }
     // setTimeout(() => { this.draw(ctx) }, 5000);
   }
-
   
-    // for (var j = 1; j < gridHeight; j++) {
-    //     for (var k = 1; k < gridWidth; k++) {
-    //         if (theGrid[j][k] === 1) {
-    //             ctx.fillRect(j, k, 1, 1);
-    //               liveCount++;
-                  
-    //         }
-    //     }
-    // }
-
   render() {
     return (
-      <canvas 
-        id='canvas'
-        width='500px'
-        height='500px'
-        onClick={this.handleClick}>
-      </canvas>
+      <Paper style={style} zDepth={4}>
+        <canvas 
+          id='canvas'
+          width='500px'
+          height='500px'
+          onClick={this.handleClick}>
+        </canvas>
+      </Paper>
     )
   }
 }

@@ -17,10 +17,14 @@ const logger = createLogger();
 injectTapEventPlugin();
 
 let cells = new Array(100).fill(0);
-// cells = map(() => cells.slice(), cells);
 cells = map(() => {
   return map(() => Math.round(Math.random()), new Array(100));
 }, cells.slice());
+
+let history = new Array(100).fill(1);
+history = map(() => {
+  return history.slice(), history;
+}, history.slice());
 
 const initialState = {
   height: 100,
@@ -29,8 +33,8 @@ const initialState = {
   animationDelay: 3,
   animationTrails: true,
   grid: cells,
-  oldGrid: cells,
-  oldOldGrid: cells,
+  historyGrid: history,
+  showTrails: false,
   running: false,
 };
 
