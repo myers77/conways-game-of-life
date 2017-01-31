@@ -2,6 +2,8 @@ import {
   UPDATE_GRID,
   RUN_GAME_STEP,
   TOGGLE_SHOW_TRAILS,
+  TOGGLE_RUN,
+  SET_INTERVAL_ID,
 } from '../actions';
 
 const grid = (state, action) => {
@@ -71,6 +73,16 @@ const grid = (state, action) => {
       return {
         ...state,
         showTrails: !state.showTrails,
+      }
+    case TOGGLE_RUN:
+      return {
+        ...state,
+        isRunning: !state.isRunning,
+      }
+    case SET_INTERVAL_ID:
+      return {
+        ...state,
+        intervalId: action.interval,
       }
     default:
       return state;

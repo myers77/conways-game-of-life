@@ -1,25 +1,27 @@
 import React from 'react';
 
 const headerStyle = {
-  'font-size': '48px',
-  'text-align': 'center',
+  'marginTop': '32px',
+  'fontSize': '48px',
+  'textAlign': 'center',
+  'color': 'rgba(0,0,0,0.87)',
 }
 
 const cursive = {
-  'font-size': '42px',
-  'font-family': 'Yellowtail, cursive',
+  'fontSize': '42px',
+  'fontFamily': 'Yellowtail, cursive',
 }
 
 const mediumFontWeight = {
-  'letter-spacing': '1px',
-  'font-weight': '500',
+  'letterSpacing': '1px',
+  'fontWeight': '500',
 }
 
 const Header = () => (
   <div
     style={headerStyle}
   >
-    <span style={cursive}>Conway's</span>
+    <div style={cursive}>Conway's</div>
     <div style={mediumFontWeight}>Game of Life</div>
   </div>
 )

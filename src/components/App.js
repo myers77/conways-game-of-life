@@ -1,17 +1,16 @@
 import React from 'react';
+
 import Header from './Header';
 import Grid from './Grid';
 import Console from './Console'
 
 const style = {
-  'font-family': 'Roboto, sans-serif',
-  'text-align': 'center',
+  'fontFamily': 'Roboto, sans-serif',
+  'textAlign': 'center',
 }
 
 const App = () => (
-  <div
-    style={style}
-  >
+  <div style={style}>
     <Header />
     <Grid />
     <Console />

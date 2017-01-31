@@ -29,21 +29,20 @@ history = map(() => {
 const initialState = {
   height: 100,
   width: 100,
-  animationFrames: 10,
-  animationDelay: 3,
   animationTrails: true,
   grid: cells,
   historyGrid: history,
   showTrails: false,
-  running: false,
+  isRunning: false,
+  intervalId: undefined,
 };
 
 const enhancer = compose(
   applyMiddleware(logger),
 );
 
-const store = createStore(grid, initialState, enhancer);
-  // const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// const store = createStore(grid, initialState, enhancer);
+const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const rootElement = document.getElementById('root');
 
