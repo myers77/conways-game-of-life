@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton'
 import Toggle from 'material-ui/Toggle';
+import FontAwesome from 'react-fontawesome';
 
 import * as Actions from '../actions';
 
@@ -15,6 +16,10 @@ const style = {
 
 const linkStyle = {
   marginTop: 96,
+}
+
+const faStyle = {
+  color: '#333',
 }
 
 const Settings = ({ actions, }) => {
@@ -29,7 +34,11 @@ const Settings = ({ actions, }) => {
     </div>
     <div style={linkStyle}>
       <a href='https://github.com/myers77/conways-game-of-life'>
-        Source code
+        <FontAwesome
+          name='github'
+          size='2x'
+          style={faStyle}
+        />
       </a>
     </div>
   </div>

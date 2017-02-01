@@ -26,16 +26,18 @@ history = map(() => {
 const initialState = {
   height: 100,
   width: 100,
+  scale: 5,
   grid: cells,
   historyGrid: history,
   showTrails: false,
   isRunning: false,
   intervalId: undefined,
-  animationSpeed: 500,
+  animationSpeed: 400,
 };
 
 const enhancer = compose(applyMiddleware(createLogger()));
-const store = createStore(grid, initialState, enhancer);
+// const store = createStore(grid, initialState, enhancer);
+ const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const rootElement = document.getElementById('root');
 
 render(

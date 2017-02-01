@@ -4,6 +4,7 @@ export const TOGGLE_RUN = 'TOGGLE_RUN';
 export const TOGGLE_SHOW_TRAILS = 'TOGGLE_SHOW_TRAILS';
 export const SET_INTERVAL_ID = 'SET_INTERVAL_ID';
 export const SET_ANIMATION_SPEED = 'SET_ANIMATION_SPEED';
+export const TOGGLE_CLICKED_CELL = 'TOGGLE_CLICKED_CELL';
 
 export const updateGrid = ( grid ) => ({
   type: UPDATE_GRID,
@@ -30,4 +31,10 @@ export const setIntervalId = (interval) => ({
 export const setAnimationSpeed = (value) => ({
   type: SET_ANIMATION_SPEED,
   value,
+})
+
+export const toggleClickedCell = (x, y) => ({
+  type: TOGGLE_CLICKED_CELL,
+  x,
+  y,
 })

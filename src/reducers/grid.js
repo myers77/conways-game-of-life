@@ -5,9 +5,12 @@ import {
   TOGGLE_RUN,
   SET_INTERVAL_ID,
   SET_ANIMATION_SPEED,
+  TOGGLE_CLICKED_CELL,
 } from '../actions';
 
 const grid = (state, action) => {
+  let newCells;
+
   switch (action.type) {
     case UPDATE_GRID:
       return {
@@ -15,7 +18,7 @@ const grid = (state, action) => {
         grid: action.grid,
       }
     case RUN_GAME_STEP:
-      let newCells = state.grid.map((arr) => {
+      newCells = state.grid.map((arr) => {
         return arr.slice();
       })
       let newHistoryGrid = state.historyGrid.map((arr) => {
@@ -30,7 +33,7 @@ const grid = (state, action) => {
       for (let row = 0; row < state.height; row++) {
         for (let col = 0; col < state.width; col++) {
           let total = 0;
-          
+
           total += state.grid[mod((row - 1), state.height)][mod((col - 1), state.width)];
           total += state.grid[mod((row - 1), state.height)][col];
           total += state.grid[mod((row - 1), state.height)][mod((col + 1), state.width)];
@@ -83,6 +86,16 @@ const grid = (state, action) => {
       return {
         ...state,
         animationSpeed: action.value,
+      }
+    case TOGGLE_CLICKED_CELL:
+      console.log(action.x, action.y);
+      newCells = state.grid.map((arr) => {
+        return arr.slice();
+      })
+      newCells[action.y][action.x] = !newCells[action.y][action.x];
+      return {
+        ...state,
+        grid: newCells,
       }
     default:
       return state;

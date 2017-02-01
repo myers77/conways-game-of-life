@@ -54,7 +54,6 @@ const speedSliderStyle = {
 
 const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, actions }) => {
   const handleToggleRun = () => {
-    console.log('toggling run');
     actions.toggleRun();
     if (isRunning) {
       clearInterval(intervalId);
@@ -115,12 +114,27 @@ const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, a
           min={0}
           max={500}
           step={1}
-          defaultValue={500}
+          defaultValue={animationSpeed}
           style={speedSliderStyle}
           onChange={handleSpeedSlider}
         />
         <FontIcon className="material-icons" style={sliderIcon}>
           motorcycle
+        </FontIcon>
+      </div>
+            <div style={sliderRow}>
+        <FontIcon className="material-icons" fontSize='24' style={sliderIcon}>
+          stop
+        </FontIcon>
+        <Slider
+          min={0}
+          max={500}
+          step={1}
+          defaultValue={400}
+          style={speedSliderStyle}
+        />
+        <FontIcon className="material-icons" height='48' style={sliderIcon}>
+          stop
         </FontIcon>
       </div>
       <Settings />
