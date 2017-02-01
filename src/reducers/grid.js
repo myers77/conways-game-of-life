@@ -22,18 +22,23 @@ const grid = (state, action) => {
         return arr.slice();
       })
 
-      for (let row = 1; row < state.height - 1; row++) {
-        for (let col = 1; col < state.width - 1; col++) {
-          let total = 0;
+      const mod = (a, n) => {
+        const rem = a % n;
+        return rem >= 0 ? rem : n + rem;
+      }
 
-          total += state.grid[row - 1][col - 1];
-          total += state.grid[row - 1][col];
-          total += state.grid[row - 1][col + 1];
-          total += state.grid[row][col - 1];
-          total += state.grid[row][col + 1];
-          total += state.grid[row + 1][col - 1];
-          total += state.grid[row + 1][col];
-          total += state.grid[row + 1][col + 1];
+      for (let row = 0; row < state.height; row++) {
+        for (let col = 0; col < state.width; col++) {
+          let total = 0;
+          
+          total += state.grid[mod((row - 1), state.height)][mod((col - 1), state.width)];
+          total += state.grid[mod((row - 1), state.height)][col];
+          total += state.grid[mod((row - 1), state.height)][mod((col + 1), state.width)];
+          total += state.grid[mod(row, state.height)][mod((col - 1), state.width)];
+          total += state.grid[mod(row, state.height)][mod((col + 1), state.width)];
+          total += state.grid[mod((row + 1), state.height)][mod((col - 1), state.width)];
+          total += state.grid[mod((row + 1), state.height)][col];
+          total += state.grid[mod((row + 1), state.height)][mod((col + 1), state.width)];
          
           switch (total) {
             case 2:
@@ -52,14 +57,6 @@ const grid = (state, action) => {
             newHistoryGrid[row][col] += 1;
           }
         }
-      }
-
-      // Stitch edges together
-      for (let l = 1; l < state.height - 1; l++) {
-        newCells[l][0] = newCells[l][state.width - 3];
-        newCells[l][state.width - 2] = newCells[l][1];
-        newCells[0][l] = newCells[state.width - 3][l];
-        newCells[state.width - 2][l] = newCells[1][l];
       }
 
       return {

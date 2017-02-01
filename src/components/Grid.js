@@ -14,6 +14,14 @@ import * as Actions from '../actions';
     display: 'inline-block',
   };
 
+  const canvasStyle = {
+    'image-rendering': 'optimizeSpeed',
+    'image-rendering': '-moz-crisp-edges',
+    'image-rendering': '-webkit-optimize-contrast',
+    'image-rendering': 'optimize-contrast',
+    imageRendering: 'pixelated',
+  }
+
 class Grid extends Component {
   tick() {
     var ctx = document.getElementById("canvas").getContext("2d");
@@ -88,6 +96,7 @@ class Grid extends Component {
           id='canvas'
           width='500px'
           height='500px'
+          style={canvasStyle}
           onClick={this.handleClick}>
         </canvas>
       </Paper>
