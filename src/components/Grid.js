@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Paper from 'material-ui/Paper';
@@ -34,7 +33,7 @@ class Grid extends Component {
   }
 
   drawHistory(ctx, maxAge) {
-    const { height, width, historyGrid, scale } = this.props;
+    const { historyGrid, scale } = this.props;
     historyGrid.map((row, rowIndex) => {
       row.map((cell, cellIndex) => {
         ctx.fillStyle=`rgba(${Math.round(245+ 10 * (1 - cell/maxAge))},
@@ -61,7 +60,7 @@ class Grid extends Component {
   }
 
   componentDidUpdate() {
-    const { showTrails, historyGrid } = this.props;
+    const { showTrails } = this.props;
     const ctx = document.getElementById("canvas").getContext("2d");
     showTrails ? this.drawHistory(ctx, 5) : this.draw(ctx);
   }

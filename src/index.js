@@ -36,8 +36,8 @@ const initialState = {
 };
 
 const enhancer = compose(applyMiddleware(createLogger()));
-// const store = createStore(grid, initialState, enhancer);
- const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(grid, initialState, enhancer);
+ // const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const rootElement = document.getElementById('root');
 
 render(

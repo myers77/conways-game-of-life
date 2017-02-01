@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import FontIcon from 'material-ui/FontIcon';
-import IconButton from 'material-ui/IconButton'
 import Toggle from 'material-ui/Toggle';
 import FontAwesome from 'react-fontawesome';
 
