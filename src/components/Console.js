@@ -14,15 +14,17 @@ const sliderRow = {
   alignItems: 'center',
   justifyContent: 'center',
   verticalAlign: 'middle',
-}
+};
 
 const sliderIcon = {
-  margin: 24,
-}
+  marginBottom: 24,
+  marginLeft: 12,
+  marginRight: 12,
+};
 
 const speedSliderStyle = {
   width: '40%',
-}
+};
 
 const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, actions }) => {
   const handleSpeedSlider = (event, value) => {
@@ -31,7 +33,7 @@ const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, a
       actions.toggleRun();
     }
     clearInterval(intervalId);
-  }
+  };
 
   return (
     <div>
@@ -52,35 +54,20 @@ const Console = ({ width, height, grid, isRunning, intervalId, animationSpeed, a
           motorcycle
         </FontIcon>
       </div>
-            <div style={sliderRow}>
-        <FontIcon className="material-icons" fontSize='24' style={sliderIcon}>
-          stop
-        </FontIcon>
-        <Slider
-          min={0}
-          max={500}
-          step={1}
-          defaultValue={400}
-          style={speedSliderStyle}
-        />
-        <FontIcon className="material-icons" height='48' style={sliderIcon}>
-          stop
-        </FontIcon>
-      </div>
       <Settings />
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
-  ...state
+  ...state,
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Actions, dispatch)
+  actions: bindActionCreators(Actions, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Console);

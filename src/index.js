@@ -18,17 +18,12 @@ cells = map(() => {
   return map(() => Math.round(Math.random()), new Array(100));
 }, cells.slice());
 
-let history = new Array(100).fill(1);
-history = map(() => {
-  return history.slice(), history;
-}, history.slice());
-
 const initialState = {
   height: 100,
   width: 100,
   scale: 5,
   grid: cells,
-  historyGrid: history,
+  historyGrid: cells.slice(),
   showTrails: false,
   isRunning: false,
   intervalId: undefined,
@@ -37,7 +32,6 @@ const initialState = {
 
 const enhancer = compose(applyMiddleware(createLogger()));
 const store = createStore(grid, initialState, enhancer);
- // const store = createStore(grid, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const rootElement = document.getElementById('root');
 
 render(

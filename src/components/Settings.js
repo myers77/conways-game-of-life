@@ -8,22 +8,22 @@ import FontAwesome from 'react-fontawesome';
 import * as Actions from '../actions';
 
 const style = {
-  width: '30%',
+  width: '15%',
   margin: 'auto',
-}
+};
 
 const linkStyle = {
   marginTop: 96,
-}
+};
 
 const faStyle = {
   color: '#333',
-}
+};
 
-const Settings = ({ actions, }) => {
+const Settings = ({ actions }) => {
   const handleShowTrailsToggled = () => {
     actions.toggleShowTrails();
-  }
+  };
 
   return (
   <div>
@@ -31,27 +31,27 @@ const Settings = ({ actions, }) => {
       <Toggle label="Show trails" onToggle={handleShowTrailsToggled} />
     </div>
     <div style={linkStyle}>
-      <a href='https://github.com/myers77/conways-game-of-life'>
+      <a href="https://github.com/myers77/conways-game-of-life">
         <FontAwesome
-          name='github'
-          size='2x'
+          name="github"
+          size="2x"
           style={faStyle}
         />
       </a>
     </div>
   </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
-  ...state
+  ...state,
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Actions, dispatch)
+  actions: bindActionCreators(Actions, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Settings);

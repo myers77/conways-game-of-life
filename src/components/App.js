@@ -9,7 +9,7 @@ const style = {
   textAlign: 'center',
   width: '80%',
   margin: 'auto',
-}
+};
 
 const App = () => (
   <div style={style}>
